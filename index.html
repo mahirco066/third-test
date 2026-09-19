@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>عيادة د. نوال مكبي - نساء وتوليد</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Font Cairo -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Cairo', 'sans-serif'],
+                    },
+                    colors: {
+                        clinic: {
+                            50: '#fdf2f8',
+                            100: '#fce7f3',
+                            200: '#fbcfe8',
+                            300: '#f9a8d4',
+                            400: '#f472b6',
+                            500: '#ec4899',
+                            600: '#db2777',
+                            700: '#be185d',
+                            800: '#9d174d',
+                            900: '#831843',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Cairo', sans-serif;
+            background-color: #f3f4f6;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .mobile-container {
+            max-width: 430px;
+            min-height: 100vh;
+            margin: 0 auto;
+            background: #ffffff;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+            position: relative;
+            padding-bottom: 75px;
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-800">
+
+<div class="mobile-container flex flex-col justify-between">
+    <!-- أعلى الشاشة / شريط الحالة والعنوان -->
+    <header class="bg-gradient-to-r from-clinic-600 to-clinic-500 text-white p-4 shadow-md sticky top-0 z-30">
+        <div class="flex items-center justify-between">
+            <div class="flex items-center space-x-3 space-x-reverse">
+                <div class="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center border border-white/30 text-white text-lg">
+                    <i class="fa-solid fa-user-doctor"></i>
+                </div>
+                <div>
+                    <h1 class="font-bold text-lg leading-tight">عيادة د. نوال مكبي</h1>
+                    <p class="text-xs text-clinic-100">استشارية أمراض النساء والتوليد</p>
+                </div>
+            </div>
+            <a href="tel:0123456789" class="w-9 h-9 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center transition">
+                <i class="fa-solid fa-phone text-sm"></i>
+            </a>
+        </div>
+    </header>
+
+    <!-- محتوى الشاشات التفاعلية -->
+    <main class="flex-1 p-4 overflow-y-auto">
+
+        <!-- 1. الشاشة الرئيسية (Home) -->
+        <section id="screen-home" class="space-y-5">
+            <!-- بنر ترحيبي وتوعوي -->
+            <div class="bg-gradient-to-br from-clinic-50 to-pink-100 border border-clinic-200 rounded-2xl p-4 shadow-sm flex items-center justify-between">
+                <div class="space-y-1">
+                    <span class="inline-block bg-clinic-600 text-white text-[11px] font-semibold px-2 py-0.5 rounded-full">صحتكِ أولاً</span>
+                    <h2 class="text-base font-bold text-clinic-900">رعاية متكاملة للأم والجنين</h2>
+                    <p class="text-xs text-gray-600 leading-relaxed">أحدث التقنيات الطبية مع بيئة مريحة وآمنة لكِ ولطفلكِ.</p>
+                </div>
+                <div class="w-20 h-20 flex-shrink-0 text-clinic-500 flex items-center justify-center text-4xl">
+                    <i class="fa-solid fa-heart-pulse"></i>
+                </div>
+            </div>
+
+            <!-- زر الحجز السريع -->
+            <button onclick="switchTab('booking')" class="w-full bg-clinic-600 hover:bg-clinic-700 text-white py-3.5 px-4 rounded-xl font-bold flex items-center justify-center gap-2 shadow-lg shadow-clinic-300/50 transition">
+                <i class="fa-regular fa-calendar-check text-lg"></i>
+                <span>احجزي موعدكِ الآن</span>
+            </button>
+
+            <!-- الخدمات الطبية -->
+            <div>
+                <div class="flex justify-between items-center mb-3">
+                    <h3 class="font-bold text-gray-800 text-sm">خدماتنا الطبية</h3>
+                    <button onclick="switchTab('services')" class="text-xs text-clinic-600 font-semibold hover:underline">عرض الكل</button>
+                </div>
+                <div class="grid grid-cols-2 gap-3">
+                    <div class="bg-white p-3 rounded-xl border border-gray-100 shadow-sm flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-lg bg-pink-50 text-clinic-600 flex items-center justify-center text-lg">
+                            <i class="fa-solid fa-person-pregnant"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-xs text-gray-800">متابعة الحمل</h4>
+                            <p class="text-[10px] text-gray-500">فحوصات دورية آمنة</p>
+                        </div>
+                    </div>
+                    <div class="bg-white p-3 rounded-xl border border-gray-100 shadow-sm flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-lg bg-pink-50 text-clinic-600 flex items-center justify-center text-lg">
+                            <i class="fa-solid fa-baby"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-xs text-gray-800">الولادة الحديثة</h4>
+                            <p class="text-[10px] text-gray-500">طبيعية وبدون ألم</p>
+                        </div>
+                    </div>
+                    <div class="bg-white p-3 rounded-xl border border-gray-100 shadow-sm flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-lg bg-pink-50 text-clinic-600 flex items-center justify-center text-lg">
+                            <i class="fa-solid fa-laptop-medical"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-xs text-gray-800">سونار 4D / تفصيلي</h4>
+                            <p class="text-[10px] text-gray-500">رؤية واضحة لنمو الجنين</p>
+                        </div>
+                    </div>
+                    <div class="bg-white p-3 rounded-xl border border-gray-100 shadow-sm flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-lg bg-pink-50 text-clinic-600 flex items-center justify-center text-lg">
+                            <i class="fa-solid fa-shield-virus"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-xs text-gray-800">علاج تأخر الإنجاب</h4>
+                            <p class="text-[10px] text-gray-500">برامج متابعة علاجية</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- بطاقة أداة حاسبة الحمل السريعة -->
+            <div class="bg-gradient-to-r from-purple-500 to-clinic-600 rounded-2xl p-4 text-white shadow-md">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <h4 class="font-bold text-sm">حاسبة موعد الولادة المتوقع</h4>
+                        <p class="text-xs text-purple-100 mt-1">احسبي تاريخ ولادتكِ وأسبوع الحمل بدقة.</p>
+                        <button onclick="switchTab('calculator')" class="mt-3 inline-block bg-white text-clinic-700 text-xs font-bold px-3 py-1.5 rounded-lg shadow-sm">
+                            ابدئي الحساب الآن
+                        </button>
+                    </div>
+                    <i class="fa-solid fa-calculator text-4xl opacity-80 pl-2"></i>
+                </div>
+            </div>
+
+            <!-- ساعات العمل والموقع -->
+            <div class="bg-white rounded-xl border border-gray-100 p-4 shadow-sm space-y-2">
+                <div class="flex items-center gap-2 text-clinic-700 font-bold text-xs">
+                    <i class="fa-solid fa-clock"></i>
+                    <span>مواعيد العمل في العيادة</span>
+                </div>
+                <p class="text-xs text-gray-600 leading-normal">
+                    من السبت إلى الخميس: 4:00 عصراً - 9:30 مساءً<br>
+                    (الجمعة عطلة أسبوعية - الطوارئ متاحة 24/7)
+                </p>
+            </div>
+        </section>
+
+        <!-- 2. شاشة حجز موعد (Booking) -->
+        <section id="screen-booking" class="hidden space-y-4">
+            <div class="border-b pb-2">
+                <h2 class="text-base font-bold text-gray-800">حجز موعد جديد</h2>
+                <p class="text-xs text-gray-500">يرجى ملء البيانات لتأكيد الحجز المسبق</p>
+            </div>
+
+            <form id="bookingForm" onsubmit="handleBooking(event)" class="space-y-3.5">
+                <div>
+                    <label class="block text-xs font-semibold text-gray-700 mb-1">اسم المريضة بالكامل *</label>
+                    <input type="text" id="patientName" required placeholder="مثال: مريم أحمد" class="w-full text-xs p-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-clinic-400 outline-none">
+                </div>
+
+                <div>
+                    <label class="block text-xs font-semibold text-gray-700 mb-1">رقم الهاتف أو الواتساب *</label>
+                    <input type="tel" id="patientPhone" required placeholder="05xxxxxxxx" class="w-full text-xs p-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-clinic-400 outline-none">
+                </div>
+
+                <div>
+                    <label class="block text-xs font-semibold text-gray-700 mb-1">نوع الكشف / الخدمة المطلوبة</label>
+                    <select id="serviceType" class="w-full text-xs p-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-clinic-400 outline-none bg-white">
+                        <option>كشف جديد ومتابعة</option>
+                        <option>متابعة حمل دورية</option>
+                        <option>فحص سونار تفصيلي (3D/4D)</option>
+                        <option>استشارة بعد الولادة</option>
+                        <option>فحص تأخر إنجاب ومناظير</option>
+                    </select>
+                </div>
+
+                <div class="grid grid-cols-2 gap-3">
+                    <div>
+                        <label class="block text-xs font-semibold text-gray-700 mb-1">اليوم المفضل</label>
+                        <input type="date" id="bookDate" required class="w-full text-xs p-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-clinic-400 outline-none">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-gray-700 mb-1">الفترة الزمنية</label>
+                        <select id="bookTime" class="w-full text-xs p-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-clinic-400 outline-none bg-white">
+                            <option>مساءً (04:00 - 06:00)</option>
+                            <option>مساءً (06:00 - 08:00)</option>
+                            <option>ليلاً (08:00 - 09:30)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-semibold text-gray-700 mb-1">ملاحظات أو أعراض خاصة (اختياري)</label>
+                    <textarea id="notes" rows="2" placeholder="أي تفاصيل تودين إخبار الدكتورة بها..." class="w-full text-xs p-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-clinic-400 outline-none"></textarea>
+                </div>
+
+                <div class="pt-2">
+                    <button type="submit" class="w-full bg-clinic-600 hover:bg-clinic-700 text-white py-3.5 rounded-xl font-bold text-sm shadow-md transition">
+                        تأكيد طلب الحجز
+                    </button>
+                    <button type="button" onclick="sendWhatsAppBooking()" class="w-full mt-2 bg-emerald-600 hover:bg-emerald-700 text-white py-3 rounded-xl font-semibold text-xs flex items-center justify-center gap-2 shadow-sm transition">
+                        <i class="fa-brands fa-whatsapp text-base"></i>
+                        <span>حجز فوري عبر واتساب</span>
+                    </button>
+                </div>
+            </form>
+        </section>
+
+        <!-- 3. شاشة حاسبة الحمل (Pregnancy Calculator) -->
+        <section id="screen-calculator" class="hidden space-y-4">
+            <div class="border-b pb-2">
+                <h2 class="text-base font-bold text-gray-800">حاسبة الحمل وموعد الولادة</h2>
+                <p class="text-xs text-gray-500">حساب الموعد المتوقع وأسبوع الحمل بدقة طبية</p>
+            </div>
+
+            <div class="bg-clinic-50 border border-clinic-200 rounded-xl p-3.5 space-y-3">
+                <label class="block text-xs font-bold text-clinic-900">أدخلي تاريخ أول يوم لآخر دورة شهرية:</label>
+                <input type="date" id="lmpDate" class="w-full text-xs p-3 bg-white border border-clinic-300 rounded-xl focus:ring-2 focus:ring-clinic-400 outline-none">
+                
+                <button onclick="calculateDueDate()" class="w-full bg-clinic-600 text-white text-xs font-bold py-3 rounded-xl shadow-sm hover:bg-clinic-700 transition">
+                    احسبي النتيجة
+                </button>
+            </div>
+
+            <div id="calcResult" class="hidden bg-white border border-gray-200 rounded-xl p-4 shadow-sm space-y-3">
+                <div class="text-center p-3 bg-pink-50 rounded-xl">
+                    <span class="text-xs text-gray-500 block">موعد الولادة المتوقع بإذن الله</span>
+                    <span id="resDueDate" class="text-lg font-bold text-clinic-700">--</span>
+                </div>
+                <div class="flex justify-between items-center text-xs border-b py-2">
+                    <span class="text-gray-500">عمر الحمل الحالي:</span>
+                    <span id="resGestationalAge" class="font-bold text-gray-800">--</span>
+                </div>
+                <div class="flex justify-between items-center text-xs py-1">
+                    <span class="text-gray-500">الثلث الحالي (Trimester):</span>
+                    <span id="resTrimester" class="font-bold text-clinic-600">--</span>
+                </div>
+                <p class="text-[11px] text-gray-400 text-center mt-2">
+                    * الحساب استرشادي ويعتمد على قاعدة ناغلي الطبية؛ يُفضل التأكيد عبر فحص السونار في العيادة.
+                </p>
+            </div>
+        </section>
+
+        <!-- 4. شاشة جميع الخدمات والعيادة (Services) -->
+        <section id="screen-services" class="hidden space-y-4">
+            <div class="border-b pb-2">
+                <h2 class="text-base font-bold text-gray-800">الخدمات الطبية والتخصصية</h2>
+                <p class="text-xs text-gray-500">إشراف مباشر من الدكتورة نوال مكبي</p>
+            </div>
+
+            <div class="space-y-3">
+                <div class="p-3.5 bg-white border border-gray-100 rounded-xl shadow-sm space-y-1">
+                    <h4 class="font-bold text-xs text-clinic-800 flex items-center gap-2">
+                        <i class="fa-solid fa-circle-check text-clinic-500"></i>
+                        متابعة الحمل الحرج وعالي الخطورة
+                    </h4>
+                    <p class="text-xs text-gray-600">برامج مراقبة مستمرة للضغط والسكري وصحة الجنين أسبوعياً.</p>
+                </div>
+
+                <div class="p-3.5 bg-white border border-gray-100 rounded-xl shadow-sm space-y-1">
+                    <h4 class="font-bold text-xs text-clinic-800 flex items-center gap-2">
+                        <i class="fa-solid fa-circle-check text-clinic-500"></i>
+                        التوليد الآمن بدون ألم
+                    </h4>
+                    <p class="text-xs text-gray-600">توفير تقنيات الولادة الطبيعية والقيصرية مع العناية التجميلية للندبات.</p>
+                </div>
+
+                <div class="p-3.5 bg-white border border-gray-100 rounded-xl shadow-sm space-y-1">
+                    <h4 class="font-bold text-xs text-clinic-800 flex items-center gap-2">
+                        <i class="fa-solid fa-circle-check text-clinic-500"></i>
+                        فحص الموجات فوق الصوتية (السونار الرباعي)
+                    </h4>
+                    <p class="text-xs text-gray-600">تصوير دقيق لملامح الجنين والكشف المبكر عن التشوهات الوراثية.</p>
+                </div>
+
+                <div class="p-3.5 bg-white border border-gray-100 rounded-xl shadow-sm space-y-1">
+                    <h4 class="font-bold text-xs text-clinic-800 flex items-center gap-2">
+                        <i class="fa-solid fa-circle-check text-clinic-500"></i>
+                        جراحة المناظير وعلاج تكيسات المبايض
+                    </h4>
+                    <p class="text-xs text-gray-600">أحدث بروتوكولات علاج عدم انتظام الدورة الشهرية والمشاكل الهرمونية.</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- شريط التنقل السفلي للهاتف (Bottom Navigation Bar) -->
+    <nav class="fixed bottom-0 left-0 right-0 max-w-[430px] mx-auto bg-white border-t border-gray-200 px-4 py-2 flex justify-around items-center z-40 shadow-lg">
+        <button onclick="switchTab('home')" id="tab-home" class="flex flex-col items-center text-clinic-600 font-bold text-[11px] space-y-1">
+            <i class="fa-solid fa-house text-lg"></i>
+            <span>الرئيسية</span>
+        </button>
+        <button onclick="switchTab('booking')" id="tab-booking" class="flex flex-col items-center text-gray-400 hover:text-clinic-600 text-[11px] space-y-1">
+            <i class="fa-regular fa-calendar-plus text-lg"></i>
+            <span>الحجز</span>
+        </button>
+        <button onclick="switchTab('calculator')" id="tab-calculator" class="flex flex-col items-center text-gray-400 hover:text-clinic-600 text-[11px] space-y-1">
+            <i class="fa-solid fa-calculator text-lg"></i>
+            <span>حاسبة الحمل</span>
+        </button>
+        <button onclick="switchTab('services')" id="tab-services" class="flex flex-col items-center text-gray-400 hover:text-clinic-600 text-[11px] space-y-1">
+            <i class="fa-solid fa-stethoscope text-lg"></i>
+            <span>الخدمات</span>
+        </button>
+    </nav>
+</div>
+
+<!-- رسالة التأكيد (Modal / Toast) -->
+<div id="successModal" class="hidden fixed inset-0 bg-black/40 z-50 flex items-center justify-center p-4">
+    <div class="bg-white rounded-2xl max-w-sm w-full p-5 text-center space-y-3 shadow-xl">
+        <div class="w-14 h-14 bg-pink-100 text-clinic-600 rounded-full flex items-center justify-center mx-auto text-2xl">
+            <i class="fa-solid fa-check"></i>
+        </div>
+        <h3 class="font-bold text-gray-900 text-base">تم إرسال طلبكِ بنجاح!</h3>
+        <p class="text-xs text-gray-500 leading-relaxed" id="modalMessage">
+            شكراً لتواصلك مع عيادة الدكتورة نوال مكبي. سنقوم بالاتصال بكِ هاتفياً لتأكيد التوقيت المحدد للكشف.
+        </p>
+        <button onclick="closeModal()" class="w-full bg-clinic-600 text-white font-bold text-xs py-2.5 rounded-xl">
+            حسناً
+        </button>
+    </div>
+</div>
+
+<script>
+    // التبديل بين الشاشات
+    function switchTab(tabName) {
+        const screens = ['home', 'booking', 'calculator', 'services'];
+        screens.forEach(s => {
+            const el = document.getElementById(`screen-${s}`);
+            const tabBtn = document.getElementById(`tab-${s}`);
+            if (s === tabName) {
+                el.classList.remove('hidden');
+                tabBtn.classList.add('text-clinic-600', 'font-bold');
+                tabBtn.classList.remove('text-gray-400');
+            } else {
+                el.classList.add('hidden');
+                tabBtn.classList.remove('text-clinic-600', 'font-bold');
+                tabBtn.classList.add('text-gray-400');
+            }
+        });
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // إرسال الحجز
+    function handleBooking(e) {
+        e.preventDefault();
+        const name = document.getElementById('patientName').value;
+        const phone = document.getElementById('patientPhone').value;
+        const service = document.getElementById('serviceType').value;
+        const date = document.getElementById('bookDate').value;
+        
+        document.getElementById('modalMessage').innerText = 
+            `عزيزتي ${name}، تم تسجيل طلب حجز (${service}) ليوم ${date}. سيتم التواصل معكِ على الرقم ${phone} لتأكيد الموعد النهائي.`;
+        
+        document.getElementById('successModal').classList.remove('hidden');
+        document.getElementById('bookingForm').reset();
+    }
+
+    function closeModal() {
+        document.getElementById('successModal').classList.add('hidden');
+        switchTab('home');
+    }
+
+    // حجز واتساب مباشر
+    function sendWhatsAppBooking() {
+        const name = document.getElementById('patientName').value || 'مريضة';
+        const service = document.getElementById('serviceType').value;
+        const phoneClinic = "201000000000"; // استبدل برقم واتساب العيادة الحقيقي
+        const text = encodeURIComponent(`مرحباً عيادة الدكتورة نوال مكبي، أود حجز موعد كشف (${service}) باسم: ${name}`);
+        window.open(`https://wa.me/${phoneClinic}?text=${text}`, '_blank');
+    }
+
+    // حساب موعد الولادة
+    function calculateDueDate() {
+        const lmpVal = document.getElementById('lmpDate').value;
+        if (!lmpVal) {
+            alert('يرجى تحديد تاريخ أول يوم لآخر دورة شهرية');
+            return;
+        }
+
+        const lmp = new Date(lmpVal);
+        // Naegele's rule: +1 year, -3 months, +7 days => approx +280 days
+        const dueDate = new Date(lmp);
+        dueDate.setDate(dueDate.getDate() + 280);
+
+        const today = new Date();
+        const diffTime = Math.abs(today - lmp);
+        const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+        const weeks = Math.floor(diffDays / 7);
+        const days = diffDays % 7;
+
+        let trimester = 'الثلث الأول (الأسبوع 1 - 13)';
+        if (weeks >= 14 && weeks <= 27) {
+            trimester = 'الثلث الثاني (الأسبوع 14 - 27)';
+        } else if (weeks >= 28) {
+            trimester = 'الثلث الثالث (الأسبوع 28 فما فوق)';
+        }
+
+        const options = { year: 'numeric', month: 'long', day: 'numeric' };
+        document.getElementById('resDueDate').innerText = dueDate.toLocaleDateString('ar-EG', options);
+        document.getElementById('resGestationalAge').innerText = `${weeks} أسبوع و ${days} يوم`;
+        document.getElementById('resTrimester').innerText = trimester;
+
+        document.getElementById('calcResult').classList.remove('hidden');
+    }
+</script>
+
+</body>
+</html>
